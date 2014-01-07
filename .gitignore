@@ -5,6 +5,8 @@ FollowMe/bin
 FollowMe/gen
 FollowMe/bin/*.*
 FollowMe/gen/*.*
+FollowMe/certs
+
 
 
 .metadata
