@@ -16,10 +16,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 public class Mylocation extends FragmentActivity implements
 		GooglePlayServicesClient.ConnectionCallbacks,
@@ -86,6 +93,7 @@ public class Mylocation extends FragmentActivity implements
 	@Override
 	public void onConnected(Bundle connectionHint) {
 		lc.requestLocationUpdates(lr, this);// start updates
+		mapHandler.sendEmptyMessage(5);//intentional gps is too fast to simulate for my testing :)
 
 	}
 
@@ -94,5 +102,38 @@ public class Mylocation extends FragmentActivity implements
 		// TODO Auto-generated method stub
 
 	}
+	
+	private final Handler mapHandler = new Handler() {
+	    public void handleMessage(Message msg) {
+	    	//hide wait text
+	    	Mylocation.this.findViewById(R.id.txtLoading).setVisibility(View.GONE);
+	    	
+	        // enable buttong
+	    	Button share = (Button) Mylocation.this.findViewById(R.id.btnShare);
+	    	//add linteners for sending a share intent
+	    	
+	    	share.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// fire a intent to share your location and all the apps for general share intent will get listed
+					
+					String uri = String.format(getResources().getString(R.string.uri),lc.getLastLocation().getLatitude(),lc.getLastLocation().getLongitude());
+					String share = String.format(getResources().getString(R.string.url), uri);
+					
+					Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+					intent.setType("text/plain");  
+					intent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(share));
+					
+					
+					startActivity(intent);
+					
+				}
+			});
+	    	
+	    	share.setVisibility(View.VISIBLE);
+	    	
+	    }
+	};
 
 }

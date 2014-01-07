@@ -3,6 +3,8 @@
 
     <string name="app_name">FollowMe</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="sharetext">SHARE LOCATION</string>
+    <string name="waittext">PLEASE WAIT</string>
+    <string name="url">&lt;a href="%1$s"/&gt;Follow Me&lt;/a&gt;</string>
+    <string name="uri">http://maps.google.com/maps?daddr=%1$f,%2$f</string>
 </resources>
