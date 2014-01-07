@@ -4,7 +4,7 @@
     android:id="@+id/linLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff"
+    android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="4" >
 
@@ -13,7 +13,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="2"
-        android:background="#ff0033"
+        android:background="@color/ihavenoideawhatthiscolorislol"
         android:orientation="horizontal" />
 
     <LinearLayout
@@ -26,7 +26,7 @@
         android:orientation="vertical" >
 
         <TextView
-            android:id="@+id/txtLoading" android:textColor="#000000"
+            android:id="@+id/txtLoading" android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
@@ -38,10 +38,10 @@
             android:hapticFeedbackEnabled="true"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:layout_gravity="center_vertical|center_horizontal"
             android:text="@string/sharetext"
-            android:background="#000000" />
+            android:background="@color/black" />
     </LinearLayout>
 
 </LinearLayout>
