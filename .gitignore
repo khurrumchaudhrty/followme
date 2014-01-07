@@ -1,0 +1,15 @@
+*.class
+
+
+FollowMe/bin
+FollowMe/gen
+FollowMe/bin/*.*
+FollowMe/gen/*.*
+
+
+.metadata
+
+# Package Files #
+*.jar
+*.war
+*.ear
