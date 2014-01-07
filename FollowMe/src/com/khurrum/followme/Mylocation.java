@@ -1,5 +1,7 @@
 package com.khurrum.followme;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -17,6 +19,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,11 +28,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.text.Html;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class Mylocation extends FragmentActivity implements
+public class Mylocation extends SherlockFragmentActivity implements
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
 	LocationRequest lr;
@@ -56,6 +59,8 @@ public class Mylocation extends FragmentActivity implements
 		lr.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 		lc = new LocationClient(this.getApplicationContext(), this, this);
 		lc.connect();
+		
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.actionbar)));
 
 	}
 

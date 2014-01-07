@@ -36,7 +36,7 @@
         <Button
             android:id="@+id/btnShare" android:visibility="gone"
             android:hapticFeedbackEnabled="true"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="50dp"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical|center_horizontal"
