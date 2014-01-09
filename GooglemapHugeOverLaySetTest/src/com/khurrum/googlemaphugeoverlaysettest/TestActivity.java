@@ -63,11 +63,6 @@ public class TestActivity extends SherlockFragmentActivity {
 			status.setText("Way Points parsed:" + waypoints.size());
 			if (options != null && msg.what != 0)
 				fragment.getMap().addPolyline(options);
-			fragment.getMap().addPolyline(
-					new PolylineOptions()
-							.add(new LatLng(51.5, -0.1),
-									new LatLng(40.7, -74.0)).width(5)
-							.color(Color.RED));
 		}
 	};
 
@@ -122,7 +117,7 @@ public class TestActivity extends SherlockFragmentActivity {
 									longitude);
 							waypoints.add(ltlg);
 							if(waypoints.size()% 100 == 0){
-							System.out.print(ltlg.toString());
+							//System.out.print(ltlg.toString());
 							handler.sendEmptyMessage(0);
 							}// very high frequency for updating the UI
 							// but for sample it is ok
