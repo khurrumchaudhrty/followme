@@ -12,6 +12,11 @@ google-play-services_lib/gen
 google-play-services_lib/bin/*.*
 google-play-services_lib/gen/*.*
 
+GooglemapHugeOverLaySetTest/bin
+GooglemapHugeOverLaySetTest/gen
+GooglemapHugeOverLaySetTest/bin/*.*
+GooglemapHugeOverLaySetTest/gen/*.*
+
 .metadata
 
 # Package Files #
