@@ -30,7 +30,11 @@ import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
-
+/**
+ * 
+ * @author khurrumchaudhry
+ *
+ */
 public class Mylocation extends SherlockFragmentActivity implements
 		GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
