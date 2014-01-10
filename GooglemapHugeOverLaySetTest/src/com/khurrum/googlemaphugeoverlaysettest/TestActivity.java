@@ -18,11 +18,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.webkit.MimeTypeMap;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * 
@@ -41,6 +44,7 @@ public class TestActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test);
 		status = (TextView) findViewById(R.id.status);
+		
 		new Thread() {
 			public void run() {
 				loadfilefromAssets();
@@ -103,32 +107,31 @@ public class TestActivity extends SherlockFragmentActivity {
 									jParser.skipChildren();
 								} else if ("latitudeE7".equals(localentry)) {
 									jParser.nextToken();
-									latitude = jParser.getDoubleValue()/10000000;
+									latitude = jParser.getDoubleValue() / 10000000;
 								} else if ("longitudeE7".equals(localentry)) {
 									jParser.nextToken();
-									longitude = jParser.getDoubleValue()/10000000;
+									longitude = jParser.getDoubleValue() / 10000000;
 								}
-								
+
 							}
 						} // end of single location we should be exausting all
-						
+
 						if (latitude != 0 && longitude != 0) {
-							LatLng ltlg = new LatLng(latitude,
-									longitude);
+							LatLng ltlg = new LatLng(latitude, longitude);
 							waypoints.add(ltlg);
-							if(waypoints.size()% 100 == 0){
-							//System.out.print(ltlg.toString());
-							handler.sendEmptyMessage(0);
+							if (waypoints.size() % 100 == 0) {
+								// System.out.print(ltlg.toString());
+								handler.sendEmptyMessage(0);
 							}// very high frequency for updating the UI
-							// but for sample it is ok
+								// but for sample it is ok
 						}
 						// the heavy activities
-							// Log.d("LATLNG", ll.latitude + ":" +
-							// ll.longitude);
+						// Log.d("LATLNG", ll.latitude + ":" +
+						// ll.longitude);
 						// System.out.println(ll.toString());
 						// System.out.print(latitude);
 						// System.out.print(":");
-						 //System.out.print(ltlg);
+						// System.out.print(ltlg);
 
 					}// end of locations array
 				}
@@ -150,4 +153,25 @@ public class TestActivity extends SherlockFragmentActivity {
 		return null;
 
 	}
+
+	// future work will make it work with file chooser to integerate a direct
+	// json source.
+
+	private static final int FILE_SELECT = 10;
+
+	private void showFileChooser() {
+		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+		intent.setType("*/JSON");
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		try {
+			startActivityForResult(
+					Intent.createChooser(
+							intent,
+							"select the location history file in json formate that was provided by google.com / take out"),
+					FILE_SELECT);
+		} catch (android.content.ActivityNotFoundException ex) {
+			// user has no file picking activity :) may be let him know :)
+		}
+	}
+
 }
